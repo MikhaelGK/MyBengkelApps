@@ -13,22 +13,10 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.mybengkel.login.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
-        <action
-            android:id="@+id/action_registerFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/homeActivity"
-        android:name="com.example.mybengkel.home.HomeActivity"
-        android:label="activity_home"
-        tools:layout="@layout/activity_home" />
+        tools:layout="@layout/fragment_register" />
 </navigation>

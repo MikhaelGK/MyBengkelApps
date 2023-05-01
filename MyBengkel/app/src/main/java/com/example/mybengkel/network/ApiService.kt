@@ -1,7 +1,8 @@
 package com.example.mybengkel.network
 
-import com.example.mybengkel.models.Users
-import com.example.mybengkel.models.Trxes
+import com.example.mybengkel.network.models.LoginDto
+import com.example.mybengkel.network.models.Customers
+import com.example.mybengkel.network.models.Trxes
 import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -10,11 +11,12 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
-private const val BASE_URL = "http://10.0.2.2/api/"
+private const val BASE_URL = "http://10.0.2.2:5000/api/"
 
 private val gson = GsonBuilder()
-    .setDateFormat("yyyy-MM-dd")
+    .setLenient()
     .create()
 
 private val retrofit = Retrofit.Builder()
@@ -24,28 +26,28 @@ private val retrofit = Retrofit.Builder()
 
 interface ApiService {
     @GET("Customers/{email}")
-    suspend fun getCustomer() : Call<Users>
+    fun getCustomer(@Path("email") email: String) : Call<Customers>
 
     @GET("DetailTrxes/{id}")
-    suspend fun getDetail() : Call<Trxes>
+    fun getDetail(@Path("id") id: String) : Call<Trxes>
 
     @GET("HeaderTrxes/{id}")
-    suspend fun getHeader() : Call<Trxes>
+    fun getHeader(@Path("id") id: String) : Call<Trxes>
 
     @POST("Auth/Login")
-    fun postLogin(@Body user: Users) : Call<String>
+    fun postLogin(@Body user: LoginDto) : Call<String>
 
     @POST("Auth/Register")
-    suspend fun postRegister(@Body user: Users)
+     fun postRegister(@Body user: LoginDto) : Call<String>
 
     @POST("Trxes")
-    suspend fun addTransaction(@Body trx: Trxes)
+     fun addTransaction(@Body trx: Trxes)
 
     @PUT("Trxes")
-    suspend fun updateTransaction(@Body trx: Trxes)
+     fun updateTransaction(@Body trx: Trxes)
 
     @PUT("Customers/{id}")
-    suspend fun updateUser(@Body user: Users)
+    fun updateUser(@Body user: Customers) : Call<String>
 }
 
 object Api {

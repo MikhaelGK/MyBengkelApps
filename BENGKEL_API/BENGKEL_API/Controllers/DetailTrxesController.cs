@@ -55,7 +55,8 @@ namespace BENGKEL_API.Controllers
                     Date = headerTrx.Date.ToString("yyyy-MM-dd"),
                     VehicleName = vehicle.Name,
                     VehicleNumber = customerVehicle.Number,
-                    Cost = d.Cost
+                    Description = d.Description,
+                    Cost = d.Cost == null ? 0 : Convert.ToInt32(d.Cost)
                 };
                 data.Add(detail);
             }

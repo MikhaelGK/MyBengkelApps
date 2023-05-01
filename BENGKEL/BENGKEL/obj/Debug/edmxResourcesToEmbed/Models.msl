@@ -26,6 +26,7 @@
     <EntitySetMapping Name="DetailTrxes">
       <EntityTypeMapping TypeName="SIDOREJO_BENGKELModel.DetailTrx">
         <MappingFragment StoreEntitySet="DetailTrx">
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="DetailTrxId" ColumnName="DetailTrxId" />
           <ScalarProperty Name="TrxId" ColumnName="TrxId" />
           <ScalarProperty Name="CustomerVehicleId" ColumnName="CustomerVehicleId" />

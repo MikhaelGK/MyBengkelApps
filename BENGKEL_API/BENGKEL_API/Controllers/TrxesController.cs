@@ -27,7 +27,6 @@ namespace BENGKEL_API.Controllers
                 trx.CustomerId,
                 trx.EmployeeId,
                 trx.VehicleId,
-                trx.Cost.ToString()
             };
             var validEmpty = Validation.ValidationString(strgs);
             if (!validEmpty) return BadRequest("All input must be filled");
@@ -52,6 +51,7 @@ namespace BENGKEL_API.Controllers
             {
                  TrxId = trx.ID,
                  CustomerVehicleId = customerVehicleId,
+                 Description = trx.Description,
                  Cost = trx.Cost
             };
             _context.DetailTrxes.Add(dData);

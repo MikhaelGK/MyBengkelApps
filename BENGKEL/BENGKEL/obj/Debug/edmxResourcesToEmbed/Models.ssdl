@@ -15,7 +15,7 @@
     <Key>
       <PropertyRef Name="CustomerVehicleId" />
     </Key>
-    <Property Name="CustomerVehicleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerVehicleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CustomerId" Type="nchar" MaxLength="6" Nullable="false" />
     <Property Name="VehicleId" Type="nchar" MaxLength="6" Nullable="false" />
     <Property Name="Number" Type="varchar" MaxLength="20" Nullable="false" />
@@ -27,7 +27,8 @@
     <Property Name="DetailTrxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TrxId" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="CustomerVehicleId" Type="int" Nullable="false" />
-    <Property Name="Cost" Type="int" Nullable="false" />
+    <Property Name="Description" Type="text" />
+    <Property Name="Cost" Type="int" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>

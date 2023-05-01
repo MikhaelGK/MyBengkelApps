@@ -17,7 +17,8 @@ namespace BENGKEL
         public int DetailTrxId { get; set; }
         public string TrxId { get; set; }
         public int CustomerVehicleId { get; set; }
-        public int Cost { get; set; }
+        public Nullable<int> Cost { get; set; }
+        public string Description { get; set; }
     
         public virtual CustomerVehicle CustomerVehicle { get; set; }
         public virtual HeaderTrx HeaderTrx { get; set; }

@@ -32,6 +32,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.colCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -57,13 +61,11 @@
             this.tbCId = new System.Windows.Forms.TextBox();
             this.tbCName = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnPay = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.colCName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbDesc = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -129,6 +131,34 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(739, 412);
             this.dgv.TabIndex = 3;
+            // 
+            // colCName
+            // 
+            this.colCName.DataPropertyName = "colCName";
+            this.colCName.HeaderText = "Customer Name";
+            this.colCName.MinimumWidth = 6;
+            this.colCName.Name = "colCName";
+            // 
+            // colVName
+            // 
+            this.colVName.DataPropertyName = "colVName";
+            this.colVName.HeaderText = "Vehicle Name";
+            this.colVName.MinimumWidth = 6;
+            this.colVName.Name = "colVName";
+            // 
+            // colVNumber
+            // 
+            this.colVNumber.DataPropertyName = "colVNumber";
+            this.colVNumber.HeaderText = "Vehicle Number";
+            this.colVNumber.MinimumWidth = 6;
+            this.colVNumber.Name = "colVNumber";
+            // 
+            // colCost
+            // 
+            this.colCost.DataPropertyName = "colCost";
+            this.colCost.HeaderText = "Cost";
+            this.colCost.MinimumWidth = 6;
+            this.colCost.Name = "colCost";
             // 
             // tableLayoutPanel3
             // 
@@ -223,6 +253,8 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.tbDesc, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label9, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.tbCost, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
@@ -419,6 +451,14 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1275, 500);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 5;
@@ -449,41 +489,24 @@
             this.btnPay.UseVisualStyleBackColor = true;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
-            // flowLayoutPanel1
+            // label9
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1275, 500);
-            this.flowLayoutPanel1.TabIndex = 4;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(3, 144);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(213, 51);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Description";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // colCName
+            // tbDesc
             // 
-            this.colCName.DataPropertyName = "colCName";
-            this.colCName.HeaderText = "Customer Name";
-            this.colCName.MinimumWidth = 6;
-            this.colCName.Name = "colCName";
-            // 
-            // colVName
-            // 
-            this.colVName.DataPropertyName = "colVName";
-            this.colVName.HeaderText = "Vehicle Name";
-            this.colVName.MinimumWidth = 6;
-            this.colVName.Name = "colVName";
-            // 
-            // colVNumber
-            // 
-            this.colVNumber.DataPropertyName = "colVNumber";
-            this.colVNumber.HeaderText = "Vehicle Number";
-            this.colVNumber.MinimumWidth = 6;
-            this.colVNumber.Name = "colVNumber";
-            // 
-            // colCost
-            // 
-            this.colCost.DataPropertyName = "colCost";
-            this.colCost.HeaderText = "Cost";
-            this.colCost.MinimumWidth = 6;
-            this.colCost.Name = "colCost";
+            this.tbDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbDesc.Location = new System.Drawing.Point(222, 149);
+            this.tbDesc.Multiline = true;
+            this.tbDesc.Name = "tbDesc";
+            this.tbDesc.Size = new System.Drawing.Size(213, 40);
+            this.tbDesc.TabIndex = 12;
             // 
             // TransactionForm
             // 
@@ -551,5 +574,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colVName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colVNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCost;
+        private System.Windows.Forms.TextBox tbDesc;
+        private System.Windows.Forms.Label label9;
     }
 }

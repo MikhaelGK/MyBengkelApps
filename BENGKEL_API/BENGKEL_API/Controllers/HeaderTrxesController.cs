@@ -23,7 +23,7 @@ namespace BENGKEL_API.Controllers
             _context = context;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{customerId}")]
         public async Task<ActionResult<IEnumerable<HeaderTrx>>> GetHeaderTrxes(string? query, string customerId)
         {
             if (_context.HeaderTrxes == null)
@@ -50,17 +50,17 @@ namespace BENGKEL_API.Controllers
                     .Where(x => x.TrxId == h.TrxId)
                     .ToListAsync();
 
-                var cost = 0;
+                var detailCost = 0;
                 foreach (var d in detail)
                 {
-                    cost += d.Cost;
+                    detailCost += d.Cost == null ? 0 : Convert.ToInt32(d.Cost);
                 }
 
                 var history = new DetailDto()
                 {
                     TrxId = h.TrxId,
                     Date = h.Date.ToString("yyyy-MM-dd"),
-                    Cost = cost
+                    Cost = detailCost
                 };
                 histories.Add(history);
             }

@@ -11099,11 +11099,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LKS\\Visual Studio\\BENGKEL_API\\BENGKEL_API\\BENGKEL_API.csproj",
+      "projectUniqueName": "D:\\Tugas\\SIDOREJO BENGKEL\\BENGKEL_API\\BENGKEL_API\\BENGKEL_API.csproj",
       "projectName": "BENGKEL_API",
-      "projectPath": "D:\\LKS\\Visual Studio\\BENGKEL_API\\BENGKEL_API\\BENGKEL_API.csproj",
+      "projectPath": "D:\\Tugas\\SIDOREJO BENGKEL\\BENGKEL_API\\BENGKEL_API\\BENGKEL_API.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\LKS\\Visual Studio\\BENGKEL_API\\BENGKEL_API\\obj\\",
+      "outputPath": "D:\\Tugas\\SIDOREJO BENGKEL\\BENGKEL_API\\BENGKEL_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

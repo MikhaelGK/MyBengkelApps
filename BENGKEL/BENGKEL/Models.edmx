@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SIDOREJO_BENGKELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SIDOREJO_BENGKELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerId" />
@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="CustomerVehicleId" />
           </Key>
-          <Property Name="CustomerVehicleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerVehicleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerId" Type="nchar" MaxLength="6" Nullable="false" />
           <Property Name="VehicleId" Type="nchar" MaxLength="6" Nullable="false" />
           <Property Name="Number" Type="varchar" MaxLength="20" Nullable="false" />
@@ -32,7 +32,8 @@
           <Property Name="DetailTrxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TrxId" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="CustomerVehicleId" Type="int" Nullable="false" />
-          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Cost" Type="int" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -166,8 +167,7 @@
             <End Role="HeaderTrx" EntitySet="HeaderTrx" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SIDOREJO_BENGKELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -203,9 +203,10 @@
           <Property Name="DetailTrxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TrxId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="CustomerVehicleId" Type="Int32" Nullable="false" />
-          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" />
           <NavigationProperty Name="CustomerVehicle" Relationship="Self.FK_DetailTrx_CustomerVehicle" FromRole="DetailTrx" ToRole="CustomerVehicle" />
           <NavigationProperty Name="HeaderTrx" Relationship="Self.FK_DetailTrx_HeaderTrx" FromRole="DetailTrx" ToRole="HeaderTrx" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -375,6 +376,7 @@
           <EntitySetMapping Name="DetailTrxes">
             <EntityTypeMapping TypeName="SIDOREJO_BENGKELModel.DetailTrx">
               <MappingFragment StoreEntitySet="DetailTrx">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DetailTrxId" ColumnName="DetailTrxId" />
                 <ScalarProperty Name="TrxId" ColumnName="TrxId" />
                 <ScalarProperty Name="CustomerVehicleId" ColumnName="CustomerVehicleId" />

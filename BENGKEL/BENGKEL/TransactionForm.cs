@@ -30,6 +30,7 @@ namespace BENGKEL
             tbCVId.Clear();
             tbVNumber.Clear();
             tbCost.Clear();
+            tbDesc.Clear();
         }
         private void AddStruk(string title, string body)
         {
@@ -72,7 +73,6 @@ namespace BENGKEL
         {
             var strgs = new List<string>()
             {
-                tbCost.Text,
                 tbCId.Text,
                 tbCVId.Text,
             };
@@ -173,6 +173,8 @@ namespace BENGKEL
                     var customerVehicle = context.CustomerVehicles
                         .FirstOrDefault(x => x.CustomerVehicleId == cvId);
 
+                    var cost = tbCost.Text == "" ? 0 : Convert.ToInt32(tbCost.Text);
+
                     var trx = new ViewModelTrx()
                     {
                         TrxId = id,
@@ -182,7 +184,8 @@ namespace BENGKEL
                         VehicleId = customerVehicle.VehicleId,
                         VehicleName = customerVehicle.Vehicle.Name,
                         VehicleNumber = customerVehicle.Number,
-                        Cost = Convert.ToInt32(tbCost.Text)
+                        Description = tbDesc.Text,
+                        Cost = cost
                     };
                     lData.Add(trx);
                     tbCId.Enabled = false;
@@ -228,12 +231,13 @@ namespace BENGKEL
                     tbVNumber.Text = eData.VehicleNumber;
                     tbCId.Text = eData.CustomerId;
                     tbCName.Text = eData.CustomerName;
+                    tbDesc.Text = eData.Description.ToString();
                     tbCost.Text = eData.Cost.ToString();
-
                     tbCVId.Enabled = false;
                     break;
                 case Operation.Update:
                     eData.Cost = Convert.ToInt32(tbCost.Text);
+                    eData.Description = tbDesc.Text;
                     ClearUI();
                     operation = Operation.None;
 
@@ -339,7 +343,14 @@ namespace BENGKEL
             foreach (var data in lData)
             {
                 total += data.Cost;
-                AddStruk(data.VehicleName, data.Cost.ToString());
+                AddStruk(data.VehicleName, data.VehicleNumber);
+                var descriptions = data.Description.Split(new Char[] {'\r', '\n'});
+                AddStruk("Description", "");
+                var length = descriptions.Length - (descriptions.Length / 2);
+                for (int i = 0; i <= length; i += 2)
+                {
+                    AddStruk("", descriptions[i]);
+                }
             }
 
             #endregion
@@ -385,6 +396,7 @@ namespace BENGKEL
                 {
                     TrxId = hData.TrxId,
                     CustomerVehicleId = i.CustomerVehicleId,
+                    Description = i.Description,
                     Cost = i.Cost
                 };
                 context.DetailTrxes.Add(dData);

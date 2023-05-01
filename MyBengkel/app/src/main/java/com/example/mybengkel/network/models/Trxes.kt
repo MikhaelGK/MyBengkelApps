@@ -1,4 +1,4 @@
-package com.example.mybengkel.models
+package com.example.mybengkel.network.models
 
 data class Trxes(
     val TrxID: String,

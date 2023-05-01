@@ -11,7 +11,9 @@ public partial class DetailTrx
 
     public int CustomerVehicleId { get; set; }
 
-    public int Cost { get; set; }
+    public string? Description { get; set; }
+
+    public int? Cost { get; set; }
 
     public virtual CustomerVehicle CustomerVehicle { get; set; } = null!;
 

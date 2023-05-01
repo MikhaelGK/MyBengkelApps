@@ -86,6 +86,7 @@ public partial class SidorejoBengkelContext : DbContext
         {
             entity.ToTable("DetailTrx");
 
+            entity.Property(e => e.Description).HasColumnType("text");
             entity.Property(e => e.TrxId)
                 .HasMaxLength(10)
                 .IsFixedLength();

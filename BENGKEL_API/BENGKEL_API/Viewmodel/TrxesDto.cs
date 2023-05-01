@@ -6,6 +6,7 @@
         public string CustomerId { get; set; }
         public string EmployeeId { get; set; }
         public string VehicleId { get; set; }
+        public string Description { get; set; }
         public int Cost { get; set; }
     }
 }
