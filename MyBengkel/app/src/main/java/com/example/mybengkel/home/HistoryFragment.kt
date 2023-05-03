@@ -58,7 +58,7 @@ class HistoryFragment : Fragment() {
 
 
 
-                                        tvTrxId.text = obj.trxID
+                                        tvTrxId.text = obj.trxId
                                         tvDate.text = obj.date
                                         tvCost.text = Converter.rupiah(obj.cost.toDouble())
                                     }
