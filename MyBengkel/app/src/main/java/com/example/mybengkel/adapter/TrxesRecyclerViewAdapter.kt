@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybengkel.network.models.DetailTrxDto
+import org.json.JSONObject
 
 abstract class TrxesRecyclerViewAdapter(
     private val data: ArrayList<DetailTrxDto>
@@ -13,6 +14,8 @@ abstract class TrxesRecyclerViewAdapter(
         val adapter = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
         return viewHolder(adapter, viewType)
     }
+
+    var onItemClick : ((DetailTrxDto) -> Unit)? = null
 
     override fun getItemViewType(position: Int): Int {
         return layoutId(position, data[position])

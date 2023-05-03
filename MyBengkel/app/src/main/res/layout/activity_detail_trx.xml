@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_blue_200"
+    android:padding="20dp"
+    tools:context=".DetailTrxActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_corner"
+        android:padding="20dp"
+        >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail Transaction"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+            <TextView
+                android:id="@+id/tvTextTrxId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaction Id"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvTextDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Date"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvTextVehicleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Vehicle Name"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvTextVehicleNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Vehicle Number"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvTextCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Cost"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+            <TextView
+                android:id="@+id/tvTrxId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transaction Id"
+                android:textAlignment="textEnd"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Date"
+                android:textAlignment="textEnd"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvVehicleName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Vehicle Name"
+                android:textAlignment="textEnd"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvVehicleNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Vehicle Number"
+                android:textAlignment="textEnd"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvCost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Cost"
+                android:textAlignment="textEnd"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

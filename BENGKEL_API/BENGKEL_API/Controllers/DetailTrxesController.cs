@@ -28,40 +28,31 @@ namespace BENGKEL_API.Controllers
             {
                 return NotFound("Data Not Found");
             }
-            var headerTrx = await _context.HeaderTrxes
-                .FirstOrDefaultAsync(x => x.TrxId == id);
 
-            if (headerTrx == null)
+            var detailTrx = await _context.DetailTrxes
+                .Where(x => x.TrxId == id)
+                .Include(x => x.Trx)
+                .Include(x => x.CustomerVehicle)
+                .FirstOrDefaultAsync();
+
+            if (detailTrx is null) return NotFound("Error");
+
+            var vehicle = await _context.Vehicles
+                .FirstOrDefaultAsync(x => x.VehicleId == detailTrx.CustomerVehicle.VehicleId);
+
+            if (vehicle is null) return NotFound();
+
+            var detail = new DetailTrxDto()
             {
-                return NotFound("Data Not Found");
-            }
+                TrxId = detailTrx.TrxId,
+                Date = detailTrx.Trx.Date.ToString("yyyy-MM-dd"),
+                VehicleName = vehicle.Name,
+                VehicleNumber = detailTrx.CustomerVehicle.Number,
+                Description = detailTrx.Description,
+                Cost = detailTrx.Cost == null ? 0 : Convert.ToInt32(detailTrx.Cost)
+            };
 
-            var details = await _context.DetailTrxes
-                .Where(x => x.TrxId == headerTrx.TrxId)
-                .ToListAsync();
-
-            var data = new List<DetailTrxDto>();
-            foreach (var d in details)
-            {
-                var customerVehicle = await _context.CustomerVehicles
-                    .FirstOrDefaultAsync(x => x.CustomerVehicleId == d.CustomerVehicleId);
-
-                var vehicle = await _context.Vehicles
-                    .FirstOrDefaultAsync(x => x.VehicleId == customerVehicle.VehicleId);
-
-                var detail = new DetailTrxDto()
-                {
-                    TrxId = headerTrx.TrxId,
-                    Date = headerTrx.Date.ToString("yyyy-MM-dd"),
-                    VehicleName = vehicle.Name,
-                    VehicleNumber = customerVehicle.Number,
-                    Description = d.Description,
-                    Cost = d.Cost == null ? 0 : Convert.ToInt32(d.Cost)
-                };
-                data.Add(detail);
-            }
-
-            return Ok(data);
+            return Ok(detail);
         }
     }
 }

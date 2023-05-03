@@ -1,5 +1,6 @@
 package com.example.mybengkel.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mybengkel.DetailTrxActivity
 import com.example.mybengkel.R
 import com.example.mybengkel.adapter.TrxesRecyclerViewAdapter
 import com.example.mybengkel.databinding.FragmentHistoryBinding
@@ -61,6 +63,10 @@ class HistoryFragment : Fragment() {
                                         tvTrxId.text = obj.trxId
                                         tvDate.text = obj.date
                                         tvCost.text = Converter.rupiah(obj.cost.toDouble())
+
+                                        view.setOnClickListener {
+                                            onItemClick?.invoke(obj)
+                                        }
                                     }
                                 }
                             }
@@ -71,6 +77,12 @@ class HistoryFragment : Fragment() {
                         }
                         binding.rvHistory.adapter = adapter
                         binding.rvHistory.setHasFixedSize(true)
+
+                        adapter.onItemClick = {
+                            val intent = Intent(activity?.applicationContext, DetailTrxActivity::class.java)
+                            intent.putExtra("trxId", it.trxId)
+                            startActivityForResult(intent, 903)
+                        }
                     }
                 }
 
