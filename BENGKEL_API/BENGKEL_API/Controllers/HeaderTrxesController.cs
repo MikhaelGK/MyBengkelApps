@@ -43,7 +43,7 @@ namespace BENGKEL_API.Controllers
 
             
 
-            var histories = new List<DetailDto>();
+            var histories = new List<DetailTrxDto>();
             foreach (var h in header)
             {
                 var detail = await _context.DetailTrxes
@@ -56,7 +56,7 @@ namespace BENGKEL_API.Controllers
                     detailCost += d.Cost == null ? 0 : Convert.ToInt32(d.Cost);
                 }
 
-                var history = new DetailDto()
+                var history = new DetailTrxDto()
                 {
                     TrxId = h.TrxId,
                     Date = h.Date.ToString("yyyy-MM-dd"),
@@ -64,7 +64,7 @@ namespace BENGKEL_API.Controllers
                 };
                 histories.Add(history);
             }
-            return Ok(histories);
+            return Ok(histories.OrderByDescending(x => x.Date));
         }
     }
 }

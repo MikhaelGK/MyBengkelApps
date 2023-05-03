@@ -44,9 +44,8 @@ namespace BENGKEL_API.Controllers
         }
 
         // PUT: api/Customers/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomer(string id, Customer customer)
+        public async Task<IActionResult> PutCustomer(string id, [FromBody]Customer customer)
         {
             if (id != customer.CustomerId)
             {

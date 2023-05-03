@@ -92,6 +92,7 @@ namespace BENGKEL_API.Controllers
                 var claim = new Claim(ClaimTypes.Role, "Customer");
                 claims.Add(claim);
             }
+            claims.Add(new Claim(ClaimTypes.Email, user.Email));
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(UserDto.KEY));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var jwt = new JwtSecurityToken(

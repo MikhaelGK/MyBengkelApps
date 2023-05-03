@@ -40,7 +40,7 @@ namespace BENGKEL_API.Controllers
                 .Where(x => x.TrxId == headerTrx.TrxId)
                 .ToListAsync();
 
-            var data = new List<DetailDto>();
+            var data = new List<DetailTrxDto>();
             foreach (var d in details)
             {
                 var customerVehicle = await _context.CustomerVehicles
@@ -49,7 +49,7 @@ namespace BENGKEL_API.Controllers
                 var vehicle = await _context.Vehicles
                     .FirstOrDefaultAsync(x => x.VehicleId == customerVehicle.VehicleId);
 
-                var detail = new DetailDto()
+                var detail = new DetailTrxDto()
                 {
                     TrxId = headerTrx.TrxId,
                     Date = headerTrx.Date.ToString("yyyy-MM-dd"),

@@ -9,4 +9,14 @@
         public string Description { get; set; }
         public int Cost { get; set; }
     }
+
+    public class DetailTrxDto
+    {
+        public string TrxId { get; set; }
+        public string Date { get; set; }
+        public string VehicleName { get; set; }
+        public string VehicleNumber { get; set; }
+        public string Description { get; set; }
+        public int Cost { get; set; }
+    }
 }
