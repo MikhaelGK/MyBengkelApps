@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybengkel.DetailTrxActivity
@@ -33,19 +34,42 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHistoryBinding.inflate(layoutInflater)
+
+        binding.searchView.setOnQueryTextListener(
+            object: SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    val search = query.toString()
+                    getHeaderTrx(search)
+                    return false
+                }
+
+                override fun onQueryTextChange(query: String?): Boolean {
+                    val search = query.toString()
+                    getHeaderTrx(search)
+                    return true
+                }
+
+            }
+        )
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Api.retrofitService.getHeader(user.customerId, "")
+        getHeaderTrx("")
+    }
+
+    private fun getHeaderTrx(query: String) {
+        Api.retrofitService.getHeader(user.customerId, query)
             .enqueue(object: Callback<ArrayList<DetailTrxDto>> {
                 override fun onResponse(
                     call: Call<ArrayList<DetailTrxDto>>,
                     response: Response<ArrayList<DetailTrxDto>>
                 ) {
                     if (response.code() == 200) {
+                        header.clear()
                         response.body()?.let { header.addAll(it) }
                         val adapter = object: TrxesRecyclerViewAdapter(header) {
                             override fun viewHolder(
@@ -91,6 +115,5 @@ class HistoryFragment : Fragment() {
                 }
             })
     }
-
 
 }

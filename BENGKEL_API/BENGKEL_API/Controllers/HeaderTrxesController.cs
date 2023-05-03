@@ -33,16 +33,6 @@ namespace BENGKEL_API.Controllers
 
             var header = await _context.HeaderTrxes.Where(x => x.CustomerId == customerId).ToListAsync();
 
-            if (query != null)
-            {
-                header = await _context.HeaderTrxes
-                    .Where(x => x.Customer.Name.Contains(query) ||
-                        x.Date.ToString().Contains(query) ||
-                        x.CustomerId.Contains(query)).ToListAsync();
-            }
-
-            
-
             var histories = new List<DetailTrxDto>();
             foreach (var h in header)
             {
@@ -64,6 +54,14 @@ namespace BENGKEL_API.Controllers
                 };
                 histories.Add(history);
             }
+
+            if (query != null)
+            {
+                histories = histories
+                    .Where(x => x.TrxId.Contains(query) ||
+                        x.Date.ToString().Contains(query)).ToList();
+            }
+
             return Ok(histories.OrderByDescending(x => x.Date));
         }
     }
