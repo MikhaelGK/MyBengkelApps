@@ -1,10 +1,9 @@
 package com.example.mybengkel.viewmodel
 
-import androidx.lifecycle.ViewModel
 import com.example.mybengkel.network.models.CustomerVehicleDto
 import com.example.mybengkel.network.models.Customers
 
-class FragmentViewModel : ViewModel() {
+class FragmentViewModel {
 
     companion object {
         var user = Customers()
